@@ -2,6 +2,7 @@
 #include <vector>
 #include "math.h"
 #include "stdlib.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ void showMatrix(Matrix K){
     for(int i=0;i<K.at(0).size();i++){
         cout << "[\t";
         for(int j=0;j<K.size();j++){
-            cout << K.at(i).at(j) << "\t";
+            cout << setprecision(3) << K.at(i).at(j) << "\t";
         }
         cout << "]\n";
     }
@@ -29,7 +30,7 @@ void showKs(vector<Matrix> Ks){
 void showVector(Vector b){
     cout << "[\t";
     for(int i=0;i<b.size();i++){
-        cout << b.at(i) << "\t";
+        cout << setprecision(3) << b.at(i) << "\t";
     }
     cout << "]\n";
 }

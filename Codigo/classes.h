@@ -1,6 +1,7 @@
+//Cambios : L4,
 enum lines {NOLINE,SINGLELINE,DOUBLELINE};
 enum modes {NOMODE,INT_FLOAT,INT_FLOAT_FLOAT,INT_INT_INT_INT};
-enum parameters {ADJECTIVE_VELOCITY,DYNAMIC_VISCOSITY,DENSITY,EXTERNAL_FORCE_X,EXTERNAL_FORCE_Y};
+enum parameters {TAU,KAPPA,LAMBDA,IPSILON,PSI,DELTA,ETA};
 enum sizes {NODES,ELEMENTS,DIRICHLET};
 enum coords {EQUIS,YE};
 
@@ -14,62 +15,27 @@ class item{
         int node3;
         float value;
     public:
-        void setId(int identifier) {
-            id = identifier;
-        }
+        void setId(int identifier) {id = identifier;}
 
-        void setX(float x_coord) {
-            x = x_coord;
-        }
+        void setX(float x_coord) {x = x_coord;}
 
-        void setY(float y_coord) {
-            y = y_coord;
-        }
+        void setY(float y_coord) {y = y_coord;}
 
-        void setNode1(int node_1) {
-            node1 = node_1;
-        }
+        void setNode1(int node_1) {node1 = node_1; }
 
-        void setNode2(int node_2) {
-            node2 = node_2;
-        }
+        void setNode2(int node_2) {node2 = node_2;}
 
-        void setNode3(int node_3) {
-            node3 = node_3;
-        }
+        void setNode3(int node_3) {node3 = node_3;}
 
-        void setValue(float value_to_assign) {
-            value = value_to_assign;
-        }
+        void setValue(float value_to_assign) {value = value_to_assign;}
 
-        int getId() {
-            return id;
-        }
-
-        float getX() {
-            return x;
-        }
-
-        float getY() {
-            return y;
-        }
-
-        int getNode1() {
-            return node1;
-        }
-
-        int getNode2() {
-            return node2;
-        }
-
-        int getNode3() {
-            return node3;
-        }
-
-        float getValue() {
-            return value;
-        }
-
+        int getId() {return id;}
+        float getX() {return x;}
+        float getY() {return y;}
+        int getNode1() {return node1;}
+        int getNode2() {return node2;}
+        int getNode3() {return node3;}
+        float getValue() {return value;}
         virtual void setValues(int a,float b,float c,int d,int e,int f,float g)=0;
 
 };
@@ -117,12 +83,14 @@ class mesh{
         condition *dirichlet_list;
         //condition *neumann_list;
     public:
-        void setParameters(float u_bar,float nu, float rho, float f_x, float f_y){
-            parameters[ADJECTIVE_VELOCITY]=u_bar;
-            parameters[DYNAMIC_VISCOSITY]=nu;
-            parameters[DENSITY]=rho;
-            parameters[EXTERNAL_FORCE_X]=f_x;
-            parameters[EXTERNAL_FORCE_Y]=f_y;
+        void setParameters(float t,float k, float l, float x, float y, float d, float e){
+             parameters[TAU]=t;
+            parameters[KAPPA]=k;
+            parameters[LAMBDA]=l;
+            parameters[IPSILON]=x;
+            parameters[PSI]=y;
+            parameters[DELTA]=d;
+            parameters[ETA]=e;
         }
         void setSizes(int nnodes,int neltos,int ndirich){
             sizes[NODES] = nnodes;
